@@ -1,0 +1,4 @@
+[package]
+name = "endian"
+version = "0.0.0"
+authors = [ "Mikael Voss <mvs@nyantec.com>" ]
