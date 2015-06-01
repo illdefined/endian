@@ -156,6 +156,7 @@ pub mod types {
 
 #[cfg(test)]
 mod tests {
+	use std::mem::transmute;
 	use types::*;
 
 	#[test]
@@ -198,5 +199,75 @@ mod tests {
 		let int = 0xcafec0dedeadbeef_u64;
 		let le = le64::new(int);
 		assert_eq!(int, le.to_native());
+	}
+
+	#[test]
+	fn be16_inspect_static() {
+		let int = 0xc0de_u16;
+		let be = be16::new(int);
+		let b: &[u8; 2] = unsafe { transmute(&be) };
+		assert_eq!(b[0], 0xc0_u8);
+		assert_eq!(b[1], 0xde_u8);
+	}
+
+	#[test]
+	fn be32_inspect_static() {
+		let int = 0xdeadbeef_u32;
+		let be = be32::new(int);
+		let b: &[u8; 4] = unsafe { transmute(&be) };
+		assert_eq!(b[0], 0xde_u8);
+		assert_eq!(b[1], 0xad_u8);
+		assert_eq!(b[2], 0xbe_u8);
+		assert_eq!(b[3], 0xef_u8);
+	}
+
+	#[test]
+	fn be64_inspect_static() {
+		let int = 0xcafec0dedeadbeef_u64;
+		let be = be64::new(int);
+		let b: &[u8; 8] = unsafe { transmute(&be) };
+		assert_eq!(b[0], 0xca_u8);
+		assert_eq!(b[1], 0xfe_u8);
+		assert_eq!(b[2], 0xc0_u8);
+		assert_eq!(b[3], 0xde_u8);
+		assert_eq!(b[4], 0xde_u8);
+		assert_eq!(b[5], 0xad_u8);
+		assert_eq!(b[6], 0xbe_u8);
+		assert_eq!(b[7], 0xef_u8);
+	}
+
+	#[test]
+	fn le16_inspect_static() {
+		let int = 0xc0de_u16;
+		let le = le16::new(int);
+		let b: &[u8; 2] = unsafe { transmute(&le) };
+		assert_eq!(b[0], 0xde_u8);
+		assert_eq!(b[1], 0xc0_u8);
+	}
+
+	#[test]
+	fn le32_inspect_static() {
+		let int = 0xdeadbeef_u32;
+		let le = le32::new(int);
+		let b: &[u8; 4] = unsafe { transmute(&le) };
+		assert_eq!(b[0], 0xef_u8);
+		assert_eq!(b[1], 0xbe_u8);
+		assert_eq!(b[2], 0xad_u8);
+		assert_eq!(b[3], 0xde_u8);
+	}
+
+	#[test]
+	fn le64_inspect_static() {
+		let int = 0xcafec0dedeadbeef_u64;
+		let le = le64::new(int);
+		let b: &[u8; 8] = unsafe { transmute(&le) };
+		assert_eq!(b[0], 0xef_u8);
+		assert_eq!(b[1], 0xbe_u8);
+		assert_eq!(b[2], 0xad_u8);
+		assert_eq!(b[3], 0xde_u8);
+		assert_eq!(b[4], 0xde_u8);
+		assert_eq!(b[5], 0xc0_u8);
+		assert_eq!(b[6], 0xfe_u8);
+		assert_eq!(b[7], 0xca_u8);
 	}
 }
