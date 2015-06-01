@@ -1,5 +1,5 @@
 [package]
-name = "endian"
+name = "endian-types"
 version = "0.0.0"
 authors = [ "Mikael Voss <mvs@nyantec.com>" ]
 
