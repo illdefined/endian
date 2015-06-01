@@ -270,4 +270,70 @@ mod tests {
 		assert_eq!(b[6], 0xfe_u8);
 		assert_eq!(b[7], 0xca_u8);
 	}
+
+	#[test]
+	fn be16_eq_static() {
+		let a = be16::new(0xcafe_u16);
+		let b = be16::new(0xfeca_u16);
+
+		assert!(a == a);
+		assert!(b == b);
+		assert!(a != b);
+		assert!(b != a);
+	}
+
+	#[test]
+	fn be32_eq_static() {
+		let a = be32::new(0xcabba9e5_u32);
+		let b = be32::new(0xe5a9bbca_u32);
+
+		assert!(a == a);
+		assert!(b == b);
+		assert!(a != b);
+		assert!(b != a);
+	}
+
+	#[test]
+	fn be64_eq_static() {
+		let a = be64::new(0xdeadbeefcafebabe_u64);
+		let b = be64::new(0xbebafecaefbeadde_u64);
+
+		assert!(a == a);
+		assert!(b == b);
+		assert!(a != b);
+		assert!(b != a);
+	}
+
+	#[test]
+	fn le16_eq_static() {
+		let a = le16::new(0xcafe_u16);
+		let b = le16::new(0xfeca_u16);
+
+		assert!(a == a);
+		assert!(b == b);
+		assert!(a != b);
+		assert!(b != a);
+	}
+
+	#[test]
+	fn le32_eq_static() {
+		let a = le32::new(0xcabba9e5_u32);
+		let b = le32::new(0xe5a9bbca_u32);
+
+		assert!(a == a);
+		assert!(b == b);
+		assert!(a != b);
+		assert!(b != a);
+	}
+
+	#[test]
+	fn le64_eq_static() {
+		let a = le64::new(0xdeadbeefcafebabe_u64);
+		let b = le64::new(0xbebafecaefbeadde_u64);
+
+		assert!(a == a);
+		assert!(b == b);
+		assert!(a != b);
+		assert!(b != a);
+	}
 }
