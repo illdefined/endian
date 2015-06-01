@@ -2,3 +2,10 @@
 name = "endian"
 version = "0.0.0"
 authors = [ "Mikael Voss <mvs@nyantec.com>" ]
+
+description = "Byte order‐limited integer types"
+
+homepage = "https://github.com/illdefined/endian"
+repository = "https://github.com/illdefined/endian.git"
+
+license = "MirOS"
